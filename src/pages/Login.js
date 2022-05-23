@@ -1,60 +1,91 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { loginInitiate } from "../redux/actions";
 
-function Login() {
+const Login = () => {
   const [state, setState] = useState({
     email: "",
     password: "",
   });
+  const { currentUser } = useSelector((state) => state.user);
+
   const { email, password } = state;
-  const handleSubmit = () => {};
+
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (currentUser) {
+      navigate("/");
+    }
+  }, [currentUser, navigate]);
+
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+    setState({ ...state, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!email || !password) {
+      return;
+    }
+    dispatch(loginInitiate(email, password));
+    setState({ email: "", password: "" });
+  };
+
   const handleGoogleSignIn = () => {};
+
   const handleFBSignIn = () => {};
-  const handleChange = () => {};
   return (
     <div>
-      <h2>Login </h2>
-      <div id="logreg-form">
-        <form className="form-signin" onSubmit={handleSubmit}>
-          <h1 className="">Sign in</h1>
-          <button type="button" onClick={handleGoogleSignIn}>
-            Google
-          </button>
-          <button type="button" onClick={handleFBSignIn}>
-            FB
-          </button>
-
+      <div>
+        <form onSubmit={handleSubmit}>
+          <h1> Sign in</h1>
           <div>
-            <input
-              type="email"
-              placeholder="email@gmail.com"
-              id="email"
-              name="email"
-              onChange={handleChange}
-              value={email}
-              required
-            />
-            <input
-              type="password"
-              placeholder="*****************"
-              id="password"
-              name="password"
-              onChange={handleChange}
-              value={password}
-              required
-            />
-            <button type="submit">Login</button>
-            <br />
+            <button type="button" onClick={handleGoogleSignIn}>
+              {" "}
+            </button>
+            <button type="button" onClick={handleFBSignIn}>
+              <span>Sign in with Facebook</span>{" "}
+            </button>
           </div>
-          <Link to="/register"> 
-          <button type="submit" id="btn-signup">Sign up</button>
-          
+          <p> OR </p>
+          <input
+            type="email"
+            id="inputEmail"
+            placeholder="Email address"
+            value={email}
+            name="email"
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            id="inputPassword"
+            placeholder="Password"
+            value={password}
+            name="password"
+            onChange={handleChange}
+            required
+          />
+
+          <button type="submit">Sign in</button>
+          <hr />
+          <p>Don't have an account!</p>
+          <Link to="/register">
+            <button type="button" id="btn-signup">
+              Sign up New Account
+            </button>
           </Link>
         </form>
+
+        <br />
       </div>
     </div>
   );
-}
+};
 
 export default Login;

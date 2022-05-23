@@ -40,19 +40,12 @@ const Register = () => {
   return (
     <div>
       <div id="register-form">
-        <form className="form-signup" onSubmit={handleSubmit}>
-          <h1
-            className="h3 mb-3 font-weight-normal"
-            style={{ textAlign: "center" }}
-          >
-            {" "}
-            Sign up
-          </h1>
+        <form onSubmit={handleSubmit}>
+          <h1> Sign up</h1>
 
           <input
             type="text"
             id="user-name"
-            className="form-control"
             placeholder="Full name"
             name="displayName"
             value={displayName}
@@ -62,7 +55,6 @@ const Register = () => {
           <input
             type="email"
             id="user-email"
-            className="form-control"
             placeholder="Email address"
             name="email"
             value={email}
@@ -72,7 +64,6 @@ const Register = () => {
           <input
             type="password"
             id="user-pass"
-            className="form-control"
             placeholder="Password"
             name="password"
             value={password}
@@ -82,7 +73,6 @@ const Register = () => {
           <input
             type="password"
             id="user-repeatpass"
-            className="form-control"
             placeholder="Repeat Password"
             name="passwordConfirm"
             value={passwordConfirm}
@@ -90,12 +80,8 @@ const Register = () => {
             required
           />
 
-          <button className="btn btn-primary btn-block" type="submit">
-            <i className="fas fa-user-plus"></i> Sign Up
-          </button>
-          <Link to="/login">
-            <i className="fas fa-angle-left"></i> Back
-          </Link>
+          <button type="submit">Sign Up</button>
+          <Link to="/login">Back</Link>
         </form>
         <br />
       </div>
