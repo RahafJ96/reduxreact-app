@@ -5,6 +5,8 @@ import { logoutInitiate } from "../redux/actions";
 
 function Home() {
   const { currentUser } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => ({ ...state.user }));
+
   const dispatch = useDispatch();
 
   const handleAuth = () => {
@@ -14,7 +16,7 @@ function Home() {
   };
   return (
     <div>
-      <h1 className="text-3xl underline">Hello </h1>
+      <h1 className="text-3xl underline">Hello {user} </h1>
      <Link to="/login">
       <button onClick={handleAuth}>LOGOUT</button>
      

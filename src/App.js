@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import { useDispatch } from "react-redux";
 import { auth } from "./firebase";
 import { setUser } from "./redux/actions";
+import AddPost from "./pages/AddPost";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,8 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
+          <Route exact path="/addpost" element={<AddPost />} />
+          <Route exact path="/addpost" element={<AddPost />} />
         </Routes>
       </div>
     </BrowserRouter>
