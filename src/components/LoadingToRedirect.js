@@ -9,8 +9,8 @@ function LoadingToRedirect() {
     const interval = setInterval(() => {
       setCount((currentCount) => --currentCount);
     }, 1000);
-    count === 0 && navigate("login")
-    return ()=> clearInterval(interval);
+    count === 0 && navigate("/login");
+    return () => clearInterval(interval);
   }, [count, navigate]);
 
   return <div>Redirecting in {count} seconds</div>;

@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { logoutInitiate } from "../redux/actions";
 
 function Home() {
@@ -13,8 +14,11 @@ function Home() {
   };
   return (
     <div>
-      <h1 className="text-3xl underline">Hello</h1>
+      <h1 className="text-3xl underline">Hello </h1>
+     <Link to="/login">
       <button onClick={handleAuth}>LOGOUT</button>
+     
+     </Link>
     </div>
   );
 }

@@ -20,7 +20,12 @@ const userReducer = (state = initalState, action) => {
         ...state,
         currentUser: null,
       };
-
+    case types.SET_USER:
+      return {
+        ...state,
+        loading: false,
+        currentUser: action.payload,
+      };
     case types.REGISTER_SUCCESS:
     case types.LOGIN_SUCCESS:
       return {

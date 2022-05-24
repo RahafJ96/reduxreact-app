@@ -42,6 +42,11 @@ const logoutFail = (error) => ({
   payload: error,
 });
 
+export const setUser = (user)=>({
+    type:types.SET_USER,
+    payload:user,
+})
+
 export const registerInitiate = (email, password, displayName) => {
   return function (dispatch) {
     dispatch(registerStart());
